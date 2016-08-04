@@ -1,5 +1,5 @@
 html, body { height: 100%; margin: 0; padding: 0; }
-body { font: 1em sans-serif; }
+
 input, button { 
 	border: none;
 	padding: 0.5em;
@@ -10,6 +10,7 @@ label {
 	font-weight: 200; 
 	padding-right: 1em;
 }
+
 button#generate { background: #994600; color: #fff; }
 button.go-to { background: #2E7899; display: none; color: #fff; }
 button.set { background: #33962A; color: #fff; }
