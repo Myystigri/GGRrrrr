@@ -59,8 +59,32 @@
     });
 
     // End of game 'play again' button click
-    $('#endGame').on('click', '.playAgain', function () {
-      window.location.reload();
+    $('#endGame').on('click', '#tretre', function () {
+      var dataid = $('#endGame').data('id');
+      // window.location.reload();
+      $.ajax({
+        url: Routing.generate('scoring'),
+        type: 'POST',
+        data: {'score': totalScore, 'id': dataid},
+        success: function(data){
+          console.log(data);
+          console.log('toto');
+        }
+        // beforeSend: function(){ // Avant d'envoyer la requete
+        //   $('#loading').css('display', 'block ');
+        //   $('#loadingImg').css('display', 'block ');
+        // },
+        // success: function (results){
+
+        //   setInterval(function(){ 
+        //     $('#loading').css('display', 'none');
+        //     $('#loadingImg').css('display', 'none');
+        //   },2000);
+
+        //   affichageMap(results);
+
+        // }
+      });
     });
 
     //
@@ -201,28 +225,8 @@
       roundScore = points;
       totalScore = totalScore + points;
 
-      $.ajax({
-          url: Routing.generate('scoring'),
-          type: 'POST',
-          data: {'score': '150'}
-          // beforeSend: function(){ // Avant d'envoyer la requete
-          //   $('#loading').css('display', 'block ');
-          //   $('#loadingImg').css('display', 'block ');
-          // },
-          // success: function (results){
-
-          //   setInterval(function(){ 
-          //     $('#loading').css('display', 'none');
-          //     $('#loadingImg').css('display', 'none');
-          //   },2000);
-
-          //   affichageMap(results);
-
-          // }
-        });
-
       $('#miniMap, #pano, #guessButton, #scoreBoard').hide();
-      $('#endGame').html('<h1>Congrats!</h1><h2>Your final score was:</h2><h1>'+totalScore+'!</h1><br/>Share this on:<br/><br/><a class="btn" href="http://www.facebook.com/sharer.php?s=100&p[title]=' + encodeURIComponent('Whereami') + '&p[summary]=' + encodeURIComponent('I just scored '+totalScore+' playing Whereami!') + '&p[url]=' + encodeURIComponent('https://github.com/webdevbrian/whereami') + '" target="_blank">Facebook</a> <a class="btn" href="https://twitter.com/intent/tweet?text=I+just+scored+'+totalScore+'+playing+whereami+by+@phrozen755,+based+off+of+geoguessr%21&url=https://github.com/webdevbrian/whereami" target="_blank">Twitter</a></p><br/><button class="btn btn-large btn-success playAgain" type="button">Play Again?</button>');
+      $('#endGame').html('<h1>Congrats!</h1><h2>Your final score was:</h2><h1>'+totalScore+'!</h1><br/>Share this on:<br/><br/><a class="btn" href="http://www.facebook.com/sharer.php?s=100&p[title]=' + encodeURIComponent('Whereami') + '&p[summary]=' + encodeURIComponent('I just scored '+totalScore+' playing Whereami!') + '&p[url]=' + encodeURIComponent('https://github.com/webdevbrian/whereami') + '" target="_blank">Facebook</a> <a class="btn" href="https://twitter.com/intent/tweet?text=I+just+scored+'+totalScore+'+playing+whereami+by+@phrozen755,+based+off+of+geoguessr%21&url=https://github.com/webdevbrian/whereami" target="_blank">Twitter</a></p><br/><button id="tretre" class="btn btn-large btn-success playAgain" type="button">Play Again?</button>');
       $('#endGame').fadeIn(500);
 
       rminitialize();

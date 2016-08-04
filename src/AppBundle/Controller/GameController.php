@@ -5,16 +5,17 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class GameController extends Controller
 {
     /**
-     * @Route("/game", name="game")
+     * @Route("/game/{id}", name="game")
      */
-    public function indexAction()
+    public function gameAction($id)
     {
         // replace this example code with whatever you need
-        return $this->render('default/game.html.twig');
+        return $this->render('default/game.html.twig', array('id'=>$id));
     }
 
     /**
@@ -31,35 +32,16 @@ class GameController extends Controller
     }
 
     /**
-     * @Route("/score", name="scoring")
+     * @Route("/score", options = { "expose" = true }, name="scoring")
      */
     public function scoreAction(Request $request)
     {
         if($request->isXmlHttpRequest())
         {
-
-            $latitude = $request->request->get('lat');
-            $longitude = $request->request->get('lng');
-            $radius = 10;
-        
-            $encoders = array(new XmlEncoder(), new JsonEncoder());
-            $normalizers = array(new GetSetMethodNormalizer());
-            $serializer = new Serializer($normalizers, $encoders);
-
-            $em = $this->getDoctrine()->getManager();
-
-            $repository = $em->getRepository('WCSPropertyBundle:Professionnel');
-
-            $LatLng = $repository->getLatLng($latitude, $longitude, $radius);
-            
-            $resultat = $serializer->serialize( $LatLng, 'json');
-
-            $response = new Response($resultat);
-
-            $response->headers->set('Content-Type', 'application/json');
-
+            $score = $request->request->get('score');
+            $idChallenge = $request->request->get('id');
+            $response = new Response($score);
             return $response;
-
         }
     }
 }

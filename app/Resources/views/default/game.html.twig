@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block title %}Jouer !{% endblock %}
-{% block javascripts %}
+{% block extrajavascripts %}
     <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
     <script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCVyB0Bp5ZfDWlcDwFzZBltJcDyp2UD5Ok&sensor=false&libraries=geometry'></script>
         {% javascripts '@AppBundle/Resources/public/js/game/*' %}
@@ -10,7 +10,7 @@
 {% block body %}
     <div id='content'>
         <div id="roundEnd"></div>
-        <div id="endGame"></div>
+        <div id="endGame" data-id={{ id }}></div>
         <div id='scoreBoard'>
           <span class='round'>Current Round: <b>1/5</b></span><br/>
           <span class='roundScore'>Last Round Score: <b>0</b></span><br/>
