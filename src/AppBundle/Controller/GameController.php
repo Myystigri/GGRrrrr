@@ -7,6 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+use AppBundle\Entity\Score;
+
 class GameController extends Controller
 {
     /**
@@ -32,16 +34,43 @@ class GameController extends Controller
     }
 
     /**
-     * @Route("/score", options = { "expose" = true }, name="scoring")
+     * @Route("/score/new", options = { "expose" = true }, name="scoreNew")
      */
     public function scoreAction(Request $request)
     {
         if($request->isXmlHttpRequest())
         {
-            $score = $request->request->get('score');
+            $em = $this->getDoctrine()->getManager();
+
+            $score = new Score();
+
+            $totalScore = $request->request->get('score');
             $idChallenge = $request->request->get('id');
-            $response = new Response($score);
-            return $response;
+
+            $user = $this->getUser();
+            $challenge = $em->getRepository('AppBundle:Challenge')->findOneById($idChallenge);
+
+            $score->setScore($totalScore);
+            $score->setIdChallenge($challenge);
+            $score->setIdUser($user);
+
+            $em->persist($score);
+            $em->flush();
+
+            return $this->redirectToRoute('score');
+            // $response = new Response($score);
+            // return $response;
         }
+    }
+
+    /**
+     * @Route("/score", options = { "expose" = true }, name="score")
+     */
+    public function scoreListAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $scores = $em->getRepository('AppBundle:Score')->findAll();
+
+        return $this->render('default/score.html.twig', array('scores'=>$scores));
     }
 }

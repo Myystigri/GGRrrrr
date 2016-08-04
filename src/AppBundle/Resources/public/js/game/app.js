@@ -63,12 +63,11 @@
       var dataid = $('#endGame').data('id');
       // window.location.reload();
       $.ajax({
-        url: Routing.generate('scoring'),
+        url: Routing.generate('scoreNew'),
         type: 'POST',
         data: {'score': totalScore, 'id': dataid},
         success: function(data){
-          console.log(data);
-          console.log('toto');
+          window.location.href = Routing.generate('score');
         }
         // beforeSend: function(){ // Avant d'envoyer la requete
         //   $('#loading').css('display', 'block ');
