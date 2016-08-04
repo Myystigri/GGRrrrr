@@ -9,12 +9,12 @@ use Symfony\Component\HttpFoundation\Request;
 class GameController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/game", name="game")
      */
     public function indexAction(Request $request)
     {
         // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', array(
+        return $this->render('default/game.html.twig', array(
             'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
         ));
     }
