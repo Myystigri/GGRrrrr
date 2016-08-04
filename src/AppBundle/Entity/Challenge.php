@@ -22,9 +22,9 @@ class Challenge
     private $id;
 
     /**
-     * @var array
+     * @var text
      *
-     * @ORM\Column(name="coords", type="array")
+     * @ORM\Column(name="coords", type="text")
      */
     private $coords;
 

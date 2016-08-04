@@ -13,6 +13,10 @@ class GameController extends Controller
      */
     public function indexAction()
     {
+        $em = $this->getDoctrine()->getManager();
+        $coords = $em->getRepository('AppBundle:Challenge')->findOneById(1);
+        dump($coords);
+
         // replace this example code with whatever you need
         return $this->render('default/game.html.twig');
     }
