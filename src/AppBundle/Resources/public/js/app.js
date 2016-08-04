@@ -10,11 +10,9 @@ $(document).ready(function(){
 	//////// global endpoints and settings /////////
 	var rounds = new Object();
 	var currentRound = 1;
-	$.urlShortener.settings.apiKey = "AIzaSyBasoY5XOYA82Kgb26TJGqhiTR8l2sh0ZY";
 	var geocoder;
 	var map;
 	var sv = new google.maps.StreetViewService();
-
 	
 	//////// initialize the map /////////
 	var initMap = function() {
@@ -147,23 +145,7 @@ $(document).ready(function(){
 
 	//////// event handlers: generate link /////////
 	$("#generate").click(function(){
-		if ( Object.size(rounds) != 5 ) {
-			displayError("Please complete the form before generating a link.");
-
-		} else {
-			var challenge = {
-				"isSyncChallenge": true,
-				"version": 1,
-				"maxTimePerRound": $("#time-limit").val(),
-				"rounds": [ ["round", "lat", "lng"],
-				 			rounds[0], rounds[1], 
-							rounds[2], rounds[3], 
-							rounds[4] ]
-			};
-			url = "http://www.geoguessr.com/?s=" + $.base64.encode(JSON.stringify(challenge));
-			shorturl = $.urlShortener({longUrl:url});
-			prompt("Your custom geoguessr challenge is at: ", shorturl);
-		}	
+	alert('toto');	
 	}); // end generate function
 
 });
