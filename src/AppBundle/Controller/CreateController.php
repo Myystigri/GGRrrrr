@@ -25,6 +25,10 @@ class CreateController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             // dump($request);exit;
+
+            $user = $this->getUser();
+            // dump($user);exit;
+
             $coordRoundOne = $request->request->get('RoundOne');
             $coordRoundTwo = $request->request->get('RoundTwo');
             $coordRoundThree = $request->request->get('RoundThree');
@@ -34,6 +38,7 @@ class CreateController extends Controller
             $coords = $coordRoundOne.";".$coordRoundTwo.";".$coordRoundThree.";".$coordRoundFour.";".$coordRoundFive;
 
             $challenge->setCoords($coords);
+            $challenge->setCreator($user);
 
             $em->persist($challenge);
             $em->flush();

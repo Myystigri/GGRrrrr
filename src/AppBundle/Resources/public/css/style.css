@@ -1,8 +1,9 @@
+
 html, body { height: 100vh; margin: 0; padding: 0; }
 body { 
 	
 }
-input, button { 
+button { 
 	border: none;
 	padding: 0.5em;
 }
@@ -11,6 +12,12 @@ label {
 	border: none; 
 	font-weight: 200; 
 	padding-right: 1em;
+}
+.titleChallenge {
+	margin-top: 80px;
+}
+.noir {
+	background-color: black;
 }
 .boxes {
 	margin-top: 40px;
@@ -38,11 +45,15 @@ background: #00ff00 url("../img/world.jpg") no-repeat fixed center;
 .inputs-set {
 	width:20vw;
 	height:5vh;
+	border: none;
+	padding: 0.5em;
 
 }
 .inputs-set2 {
 	width:10vw;
 	height:5vh;
+	border: none;
+	padding: 0.5em;
 }
 .btn-save {
 	height:5vh;

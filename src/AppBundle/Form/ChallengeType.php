@@ -15,7 +15,7 @@ class ChallengeType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('creator')
+            ->remove('creator')
             ->remove('coords')
         ;
     }

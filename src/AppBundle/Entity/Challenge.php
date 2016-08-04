@@ -29,9 +29,10 @@ class Challenge
     private $coords;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="creator", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\JoinColumn(name="creator", referencedColumnName="id")
      */
     private $creator;
 
