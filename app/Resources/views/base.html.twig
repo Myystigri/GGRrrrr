@@ -9,9 +9,11 @@
                 <link rel="stylesheet" href="{{ asset_url }}" />
             {% endstylesheets %}
         {% endblock %}
+        {% block extracss %}
+        {% endblock %}
 
     </head>
-    <body>
+    <body class="{% block bodyclass %}{% endblock %}">
 
         {% block javascripts %}{% endblock %}
 

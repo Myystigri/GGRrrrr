@@ -9,17 +9,17 @@
 {% endblock %}
 
 {% block body %}
-    <div id="form-container">
+    <div id="form-container" class="set-position">
     <h4>Create your own challenge !</h4>
         {{ form_start(form) }}
-        <p class="step 1 active"><input type="text" name="RoundOne" id="1" placeholder="Round 1" required="require"/> <button class="1 go-to">Go to</button><button class="1 set">Set</button></p>
-        <p class="step 2"><input type="text" name="RoundTwo" id="2" placeholder="Round 2" required="require"/> <button class="2 go-to">Go to</button><button class="2 set">Set</button></p>
-        <p class="step 3"><input type="text" name="RoundThree" id="3" placeholder="Round 3" required="require"/> <button class="3 go-to">Go to</button><button class="3 set">Set</button></p>
-        <p class="step 4"><input type="text" name="RoundFour" id="4" placeholder="Round 4" required="require"/> <button class="4 go-to">Go to</button><button class="4 set">Set</button></p>
-        <p class="step 5"><input type="text" name="RoundFive" id="5" placeholder="Round 5" required="require"/> <button class="5 go-to">Go to</button><button class="5 set">Set</button></p>
-            {{ form_widget(form.name, {'attr': {'placeholder': 'Name'}})}}
-            {{ form_widget(form.creator, {'attr': {'placeholder': 'Creator'}})}}
-            <button name="submitAction" value="save" type="submit">Save</button>
+        <p class="step 1 active"><input type="text" class="inputs-set" name="RoundOne" id="1" placeholder="Round 1" required="require"/> <button class="1 go-to">Go to</button><button class="1 set">Set</button></p>
+        <p class="step 2"><input type="text" class="inputs-set" name="RoundTwo" id="2" placeholder="Round 2" required="require"/> <button class="2 go-to">Go to</button><button class="2 set">Set</button></p>
+        <p class="step 3"><input type="text" class="inputs-set" name="RoundThree" id="3" placeholder="Round 3" required="require"/> <button class="3 go-to">Go to</button><button class="3 set">Set</button></p>
+        <p class="step 4"><input type="text" class="inputs-set" name="RoundFour" id="4" placeholder="Round 4" required="require"/> <button class="4 go-to">Go to</button><button class="4 set">Set</button></p>
+        <p class="step 5"><input type="text" class="inputs-set" name="RoundFive" id="5" placeholder="Round 5" required="require"/> <button class="5 go-to">Go to</button><button class="5 set">Set</button></p>
+            {{ form_widget(form.name, {'attr': {'placeholder': 'Name','class':'inputs-set2'}})}}
+            {{ form_widget(form.creator, {'attr': {'placeholder': 'Creator','class':'inputs-set2'}})}}
+            <button name="submitAction" class="btn-save" value="save" type="submit">Save</button>
         {{ form_end(form) }}
     </div>
     <div id="map-container"></div>

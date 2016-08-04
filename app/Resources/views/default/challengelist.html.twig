@@ -9,12 +9,22 @@
     {% endblock %}
 
     {% block body %}
-
-    {% for key, challenge in challenges %}
-      {{ challenge.name }}
-        <a href="{{path('game')}}">
-            <button id="{{ challenge.id }}" type="button" class="btn btn-primary btn-lg sendCoords" data-coords="{{ challenge.coords }}">Go to this challenge FFS !</button>
-        </a>
-    {% endfor %}
-
+        <h1 class="text-center">Liste des challenges disponibles </h1>
+        <div class="col-md-12">
+            <div class="row">
+                {% for key, challenge in challenges %}
+                    <div class="col-sm-5 col-md-3 boxes">
+                        <div class="thumbnail">
+                            <div class="caption">
+                                <h3 class="text-center">{{ challenge.name }}</h3>
+                                <p class="text-center">Challenge créé par <b>{{ challenge.creator }}</b></p>
+                                <div class="text-center"><a href="{{path('game')}}">
+                                    <button id="{{ challenge.id }}" type="button" class="btn btn-primary btn-md sendCoords" data-coords="{{ challenge.coords }}">Go to this challenge FFS !</button>
+                                </a></div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
     {% endblock %}
