@@ -107,7 +107,7 @@ $(document).ready(function(){
 			streetLat = svObj.position.lat()
 			streetLng = svObj.position.lng()
 			rounds[thisround-1] = [thisround, streetLat, streetLng];
-			addressBox.val(streetLat + ", " + streetLng);
+			addressBox.val(streetLat + "," + streetLng);
 			
 			// and add it; no validation or coding needed since SV active
 			var marker = new google.maps.Marker( {map: map, position: map.getStreetView().position } );
@@ -142,10 +142,5 @@ $(document).ready(function(){
 			}); // end geocode function			
 		}
 	});
-
-	//////// event handlers: generate link /////////
-	$("#generate").click(function(){
-	alert('toto');	
-	}); // end generate function
 
 });

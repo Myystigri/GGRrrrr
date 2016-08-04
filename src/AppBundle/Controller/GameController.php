@@ -18,16 +18,15 @@ class GameController extends Controller
     }
 
     /**
-     * @Route("/pregame", name="pregame")
+     * @Route("/challengelist", name="challengelist")
      */
-    public function pregameAction()
+    public function challengeListAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $challenge = $em->getRepository('AppBundle:Challenge')->findOneById(1);
-        $coords = $challenge->getCoords();
+        $challenges = $em->getRepository('AppBundle:Challenge')->findAll();
 
-        return $this->render('default/pregame.html.twig', array(
-            'coords' => $coords,
+        return $this->render('default/challengelist.html.twig', array(
+            'challenges' => $challenges,
         ));
     }
 }

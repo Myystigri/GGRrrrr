@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+    {% block title %}Préparer la partie !{% endblock %}
+    
+    {% block javascripts %}
+    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
+        {% javascripts '@AppBundle/Resources/public/js/pregame/*' %}
+            <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+    {% endblock %}
+
+    {% block body %}
+
+    {% for key, challenge in challenges %}
+      {{ challenge.name }}
+        <a href="{{path('game')}}">
+            <button id="{{ challenge.id }}" type="button" class="btn btn-primary btn-lg sendCoords" data-coords="{{ challenge.coords }}">Go to this challenge FFS !</button>
+        </a>
+    {% endfor %}
+
+    {% endblock %}

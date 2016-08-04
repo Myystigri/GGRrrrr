@@ -6,6 +6,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
+use AppBundle\Form\ChallengeType;
+use AppBundle\Entity\Challenge;
+
 class CreateController extends Controller
 {
     /**
@@ -13,9 +16,33 @@ class CreateController extends Controller
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
+
+        $challenge = new Challenge();
+        $form = $this->createForm('AppBundle\Form\ChallengeType', $challenge);
+        $form->handleRequest($request);
+        
+        $em = $this->getDoctrine()->getManager();
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // dump($request);exit;
+            $coordRoundOne = $request->request->get('RoundOne');
+            $coordRoundTwo = $request->request->get('RoundTwo');
+            $coordRoundThree = $request->request->get('RoundThree');
+            $coordRoundFour = $request->request->get('RoundFour');
+            $coordRoundFive = $request->request->get('RoundFive');
+
+            $coords = $coordRoundOne.";".$coordRoundTwo.";".$coordRoundThree.";".$coordRoundFour.";".$coordRoundFive;
+
+            $challenge->setCoords($coords);
+
+            $em->persist($challenge);
+            $em->flush();
+
+            return $this->render('default/index.html.twig');
+        }
+
         return $this->render('default/create.html.twig', array(
-            'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
+            'form' => $form->createView(),
         ));
     }
 }
