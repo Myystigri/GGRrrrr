@@ -11,11 +11,9 @@ class GameController extends Controller
     /**
      * @Route("/game", name="game")
      */
-    public function indexAction(Request $request)
+    public function indexAction()
     {
         // replace this example code with whatever you need
-        return $this->render('default/game.html.twig', array(
-            'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
-        ));
+        return $this->render('default/game.html.twig');
     }
 }
