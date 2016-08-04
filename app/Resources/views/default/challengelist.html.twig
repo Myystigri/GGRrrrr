@@ -1,9 +1,9 @@
-{% extends 'base.html.twig' %}
+{# {% extends 'base.html.twig' %} #}
     {% block title %}Préparer la partie !{% endblock %}
     
     {% block javascripts %}
     <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js'></script>
-        {% javascripts '@AppBundle/Resources/public/js/pregame/*' %}
+        {% javascripts '@AppBundle/Resources/public/js/challenge/*' %}
             <script src="{{ asset_url }}"></script>
         {% endjavascripts %}
     {% endblock %}
