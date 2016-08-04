@@ -18,7 +18,6 @@
         <p class="step 4"><input type="text" name="RoundFour" id="4" placeholder="Round 4" required="require"/> <button class="4 go-to">Go to</button><button class="4 set">Set</button></p>
         <p class="step 5"><input type="text" name="RoundFive" id="5" placeholder="Round 5" required="require"/> <button class="5 go-to">Go to</button><button class="5 set">Set</button></p>
             {{ form_widget(form.name, {'attr': {'placeholder': 'Name'}})}}
-            {{ form_widget(form.creator, {'attr': {'placeholder': 'Creator'}})}}
             <button name="submitAction" value="save" type="submit">Save</button>
         {{ form_end(form) }}
     </div>
