@@ -13,6 +13,12 @@ label {
 	font-weight: 200; 
 	padding-right: 1em;
 }
+.score{
+	padding-top:80px;
+}
+.vote{
+	margin-top: 40vh;
+}
 .titleChallenge {
 	margin-top: 80px;
 }

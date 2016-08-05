@@ -1,20 +1,19 @@
 {% extends 'base.html.twig' %}
-    {% block title %}Score ...{% endblock %}
+    {% block title %}Score challenge {{ scores.0.idChallenge.name }}{% endblock %}
     
     {% block extrajavascripts %}
     {% endblock %}
 
     {% block body %}
-
-        {{ scores.0.idChallenge.name }}
-        {% for score in scores %}
-            <div class="row">
-                <div class="col-md-12">
-                    {{ score.idUser.username }}'s score : {{ score.score }} !
-                    <a href="{{path('vote_new', { 'id': id })}}"><button>Voter pour ce challenge</button></a>
-                </div>
-            </div>
-        {% endfor %}
+        <div class="container score">
+            <h2>{{ scores.0.idChallenge.name }}</h2>
+            <a href="{{path('vote_new', { 'id': id })}}"><button>Voter pour ce challenge</button></a>
+            <ul class="list-group">
+                {% for score in scores %}
+                    <li class="list-group-item"><span class="badge">{{ score.score }}</span> {{ score.idUser.username }}'s score : </li>
+                {% endfor %}
+            </ul>
+        </div>
 
     {% endblock %}
 

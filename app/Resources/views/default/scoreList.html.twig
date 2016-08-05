@@ -5,14 +5,14 @@
     {% endblock %}
 
     {% block body %}
-        {% for challenge in challenges %}
-            <div class="row">
-                <div class="col-md-12">
-                    <a href="{{path('score', { 'id': challenge.id })}}">{{ challenge.name }}</a>
+
+        <div class="container score">
+            <ul class="list-group">
+                {% for challenge in challenges %}
+                    <a href="{{path('score', { 'id': challenge.id })}}"><li class="list-group-item">{{ challenge.name }}</li></a>
                     <a href="{{path('vote_new', { 'id': challenge.id })}}"><button>Voter pour ce challenge</button></a>
-                </div>
-            </div>
-        {% endfor %}
+                {% endfor %}
+            </ul>
+        </div>
 
     {% endblock %}
-

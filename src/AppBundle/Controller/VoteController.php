@@ -68,6 +68,7 @@ class VoteController extends Controller
         }
 
         return $this->render('vote/new.html.twig', array(
+            'challenge' => $challenge,
             'vote' => $vote,
             'form' => $form->createView(),
         ));
