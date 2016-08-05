@@ -10,7 +10,7 @@
             {% endstylesheets %}
         {% endblock %}
 
-        {% block extracss %}{% endblock %}
+        {% block extracss %}<link rel="stylesheet" href="{{ asset('css/style.css')}}" />{% endblock %}
 
     </head>
     <body class="{% block bodyclass %}{% endblock %}">

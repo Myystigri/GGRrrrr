@@ -42,6 +42,10 @@
                             </div>
                         {% endif %}
                     {% endfor %}
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        {% else %}
+                        <img src="{{asset('bundles/app/img/score.png')}}"><h3>You need to be logged to save your score !</h3>
+                    {% endif %}
                 </div><!--/panel-body-->
             </div><!--/panel-->
         </div>

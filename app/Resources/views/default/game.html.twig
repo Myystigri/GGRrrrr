@@ -8,6 +8,9 @@
                 <script src="{{ asset_url }}"></script>
         {% endjavascripts %}
 {% endblock %}
+{% block extracss %}
+    <link rel="stylesheet" href="{{ asset('css/stylejeu.css')}}" />
+{% endblock %}
 {% block body %}
     <div id='content'>
         <div id="roundEnd"></div>
