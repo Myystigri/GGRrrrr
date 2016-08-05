@@ -29,7 +29,17 @@
                                     <p class="text-center">No vote for this challenge !</p>
                                 {% else %}
                                     {% set moyenne = somme / i %}
-                                    <p class="text-center">Rating gamer: {{ moyenne }} / 5</p>
+                                    {% if moyenne >= 1 and moyenne < 2 %}
+                                        <div class="text-center"><img class="text-center" src={{asset('img/etoile.png')}}></div>
+                                    {% elseif moyenne >= 2 and moyenne < 3 %}
+                                        <div class="text-center"><img class="text-center" src={{asset('img/etoile2.png')}}></div>
+                                    {% elseif moyenne >= 3 and moyenne < 4 %}
+                                        <div class="text-center"><img class="text-center" src={{asset('img/etoile3.png')}}></div>
+                                    {% elseif moyenne >= 4 and moyenne < 5 %}
+                                        <div class="text-center"><img class="text-center" src={{asset('img/etoile4.png')}}></div>
+                                    {% else %}
+                                        <div class="text-center"><img class="text-center" src={{asset('img/etoile.png')}}></div>
+                                    {% endif %}
                                 {% endif %}
                                    
                                 <p class="text-center">Challenge made by <b>{{ challenge.creator }}</b></p>
