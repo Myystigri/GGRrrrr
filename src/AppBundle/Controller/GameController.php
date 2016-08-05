@@ -44,32 +44,35 @@ class GameController extends Controller
             $user = $this->getUser();
             $scores = $em->getRepository('AppBundle:Score')->findOneByIdUser($user);
             $totalScore = $request->request->get('score');
+            if (!empty($user)){
+                if (!empty($scores)) {
+                    $oldScore=$scores->getScore();
+                    if ($oldScore<$totalScore){
+                        $scores->setScore($totalScore);
 
-            if (!empty($scores)) {
-                $oldScore=$scores->getScore();
-                if ($oldScore<$totalScore){
-                $scores->setScore($totalScore);
-
-                $em->persist($scores);
-                $em->flush();
+                        $em->persist($scores);
+                        $em->flush();
+                    }
+                    else {
+                    }
                 }
                 else {
+
+                    $score = new Score();
+
+                    $idChallenge = $request->request->get('id');
+
+                    $challenge = $em->getRepository('AppBundle:Challenge')->findOneById($idChallenge);
+
+                    $score->setScore($totalScore);
+                    $score->setIdChallenge($challenge);
+                    $score->setIdUser($user);
+
+                    $em->persist($score);
+                    $em->flush();
                 }
             }
             else {
-
-                $score = new Score();
-
-                $idChallenge = $request->request->get('id');
-
-                $challenge = $em->getRepository('AppBundle:Challenge')->findOneById($idChallenge);
-
-                $score->setScore($totalScore);
-                $score->setIdChallenge($challenge);
-                $score->setIdUser($user);
-
-                $em->persist($score);
-                $em->flush();
             }
 
             return $this->redirectToRoute('score');

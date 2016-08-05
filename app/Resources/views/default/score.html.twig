@@ -7,7 +7,7 @@
     {% block body %}
         <div class="col-md-12">
             <div class="row">
-                {{ dump(scores) }}
+                <a href="{{path('vote_new', { 'id': 6 })}}"><button>Voter pour ce challenge</button></a>
             </div>
         </div>
     {% endblock %}

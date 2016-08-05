@@ -25,6 +25,9 @@ label {
 .all {
 background: #00ff00 url("../img/world.jpg") no-repeat fixed center; 
 }
+.margin-top{
+	margin-top: 70px;
+}
 .titleHome {
 	font-family: 'Chewy', cursive;
 	color:white;
