@@ -72,8 +72,7 @@ class GameController extends Controller
                     $em->flush();
                 }
             }
-            else {
-            }
+
             return new Response(
                 'toto'
             );

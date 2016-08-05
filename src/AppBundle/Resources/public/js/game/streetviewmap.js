@@ -2,7 +2,7 @@
       // Streetview Map
       //
 
-      function svinitialize() {
+      function svinitialize(i) {
 
         console.log('No peaking!');
 
@@ -16,7 +16,10 @@
         
         var coordArray = localStorage.getItem('coordinate').split(';');
 
-        var randCoord = coordArray[Math.floor(Math.random() * coordArray.length)];
+        // for (i = 0; i < 5; i++) {
+        //   var randCoord = coordArray[i];
+        // }
+        var randCoord = coordArray[i];
         coordArrayLatLongs = randCoord.replace(/[\])}[{(]/g,'').split(',');
 
         window.locLL = coordArrayLatLongs[0]+","+coordArrayLatLongs[1];

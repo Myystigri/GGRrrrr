@@ -3,6 +3,7 @@
     // Setup
     //
 
+    var idRound = 0;
     var round = 1;
     var points = 0;
     var roundScore = 0;
@@ -14,7 +15,7 @@
     //  Init maps
     //
     
-    svinitialize();
+    svinitialize(idRound);
     mminitialize();
 
     //
@@ -47,13 +48,13 @@
 
     // End of round continue button click
     $('#roundEnd').on('click', '.closeBtn', function () {
-      
+      idRound++;
       $('#roundEnd').fadeOut(500);
       // Reset Timer
       resetTimer();
 
       // Reload maps to refresh coords
-      svinitialize();
+      svinitialize(idRound);
       mminitialize();
       rminitialize();
     });
@@ -161,7 +162,7 @@
     };
 
     function endRound(){
-      round++
+      round++;
       if(ranOut==true){
         roundScore = 0;
       } else {

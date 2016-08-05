@@ -28,6 +28,5 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/create, role: IS_AUTHENTICATED_REMEMBERED }
         - { path: ^/vote, role: IS_AUTHENTICATED_REMEMBERED }
-        - { path: ^/score, role: IS_AUTHENTICATED_REMEMBERED }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
