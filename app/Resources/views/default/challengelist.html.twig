@@ -12,11 +12,24 @@
         <h1 class="text-center titleChallenge">Challenges available :</h1>
         <div class="col-md-12">
             <div class="row">
-                {% for key, challenge in challenges %}
+                {% for challenge in challenges  %}
+                        
                     <div class="col-sm-5 col-md-3 boxes">
                         <div class="thumbnail">
                             <div class="caption">
                                 <h3 class="text-center">{{ challenge.name }}</h3>
+                                {% set i = 0 %}
+                                {% set somme = 0 %}
+                    {% for key, vote in votes if vote.challengeId.id == challenge.id %}
+                        {% set i = i + 1 %}
+
+                        {% set somme = (vote.vote+somme) %}
+                    {{ i }}       
+                    {% set moyenne = 0 %}
+                    {% endfor %}
+                    {% set moyenne = somme / i %}
+{#                         {{ moyenne }}
+ #}                                   
                                 <p class="text-center">Challenge by <b>{{ challenge.creator }}</b></p>
                                 <div class="text-center"><a href="{{path('game', { 'id': challenge.id })}}">
                                     <button id="{{ challenge.id }}" type="button" class="btn btn-primary btn-md sendCoords" data-coords="{{ challenge.coords }}">Go to this challenge FFS !</button>
@@ -25,6 +38,7 @@
                         </div>
                     </div>
                 {% endfor %}
+
             </div>
         </div>
     {% endblock %}

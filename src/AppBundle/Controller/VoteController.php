@@ -47,7 +47,7 @@ class VoteController extends Controller
         $form->handleRequest($request);
         $user = $this->getUser();
         $challenge = $em->getRepository('AppBundle:Challenge')->findOneById($id);
-        $votage = $em->getRepository('AppBundle:Vote')->findOneByUserId($user);
+        $votage = $em->getRepository('AppBundle:Vote')->findBy(array('challengeId'=>$challenge,'userId'=>$user));
 
 
         if ($form->isSubmitted() && $form->isValid()) {

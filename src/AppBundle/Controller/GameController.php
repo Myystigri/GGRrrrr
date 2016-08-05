@@ -28,8 +28,11 @@ class GameController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $challenges = $em->getRepository('AppBundle:Challenge')->findAll();
+
+        $votes = $em->getRepository('AppBundle:Vote')->findAll();
         return $this->render('default/challengelist.html.twig', array(
             'challenges' => $challenges,
+            'votes' => $votes
         ));
     }
 
