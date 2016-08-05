@@ -67,8 +67,16 @@
         type: 'POST',
         data: {'score': totalScore, 'id': dataid},
         success: function(data){
-          console.log(data);
-          window.location.href = Routing.generate('score', {'id': dataid});
+          if (data == 'empty') {
+            $('<h3 style="color: red;">You need to be logged to save your score !</h3></br>').insertBefore('#tretre');
+            setInterval(function(){
+              window.location.href = Routing.generate('score', {'id': dataid})
+            },5000);
+          } else {
+            setInterval(function(){
+              window.location.href = Routing.generate('score', {'id': dataid})
+            },2000);
+          }
         }
       });
     });

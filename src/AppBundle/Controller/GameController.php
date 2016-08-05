@@ -49,7 +49,10 @@ class GameController extends Controller
             $idChallenge = $request->request->get('id');
             $scores = $em->getRepository('AppBundle:Score')->findOneBy(array('idChallenge' => $idChallenge, 'idUser'=> $user));
 
+            $response ='empty';
+            
             if (!empty($user)){
+                $response ='full';
                 if (!empty($scores)) {
                     $oldScore=$scores->getScore();
                     if ($oldScore<$totalScore){
@@ -74,7 +77,7 @@ class GameController extends Controller
             }
 
             return new Response(
-                'toto'
+                $response
             );
         }
     }
