@@ -123,27 +123,4 @@ class Score
     {
         return $this->score;
     }
-
-    /**
-     * Set Challenge
-     *
-     * @param \AppBundle\Entity\Challenge $challenge
-     * @return Score
-     */
-    public function setChallenge(\AppBundle\Entity\Challenge $challenge = null)
-    {
-        $this->Challenge = $challenge;
-
-        return $this;
-    }
-
-    /**
-     * Get Challenge
-     *
-     * @return \AppBundle\Entity\Challenge 
-     */
-    public function getChallenge()
-    {
-        return $this->Challenge;
-    }
 }

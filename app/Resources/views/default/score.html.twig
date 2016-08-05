@@ -5,6 +5,10 @@
     {% endblock %}
 
     {% block body %}
+        {# {% for challenge in challenges %}
+            {{ challenge }}
+
+        {% endfor %} #}
         <div class="col-md-12">
             <div class="row">
                 <a href="{{path('vote_new', { 'id': 6 })}}"><button>Voter pour ce challenge</button></a>

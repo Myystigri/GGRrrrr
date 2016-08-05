@@ -28,7 +28,6 @@ class GameController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $challenges = $em->getRepository('AppBundle:Challenge')->findAll();
-        dump($challenges);
         return $this->render('default/challengelist.html.twig', array(
             'challenges' => $challenges,
         ));
@@ -87,7 +86,11 @@ class GameController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $scores = $em->getRepository('AppBundle:Score')->findAll();
-        dump($scores);
+        $challenges = $em->getRepository('AppBundle:Challenge')->findAll();
+        dump($challenges);
+
+
+
         
         // $a = new ArrayCollection();
         // $a->add('challengeName'.','.'userName'.','.'userScore');
@@ -101,6 +104,6 @@ class GameController extends Controller
         //     $arr = $a->toArray();
         // }
 
-        return $this->render('default/score.html.twig', array('scoresTab'=>$arr));
+        return $this->render('default/score.html.twig', array('challenges'=>$challenges));
     }
 }
