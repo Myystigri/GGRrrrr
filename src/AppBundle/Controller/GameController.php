@@ -76,8 +76,9 @@ class GameController extends Controller
             }
             else {
             }
-
-            return $this->redirectToRoute('score', array('id' => 'idChallenge'));
+            return new Response(
+                'toto'
+            );
         }
     }
 
@@ -98,6 +99,7 @@ class GameController extends Controller
      */
     public function scoreAction($id)
     {
+
         $em = $this->getDoctrine()->getManager();
         $challenges = $em->getRepository('AppBundle:Challenge')->findOneById($id);
         $scores = $em->getRepository('AppBundle:Score')->findByidChallenge($challenges);
