@@ -43,7 +43,6 @@ class Challenge
      */
     private $name;
 
-
     /**
      * Get id
      *

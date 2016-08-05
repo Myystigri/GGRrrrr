@@ -29,6 +29,7 @@ class Score
      */
     private $idChallenge;
 
+
     /**
      * @var integer
      *

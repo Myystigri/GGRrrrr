@@ -47,13 +47,22 @@ class VoteController extends Controller
         $form->handleRequest($request);
         $user = $this->getUser();
         $challenge = $em->getRepository('AppBundle:Challenge')->findOneById($id);
-        
+        $votage = $em->getRepository('AppBundle:Vote')->findOneByUserId($user);
+
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $vote->setChallengeId($challenge);
-            $vote->setUserId($user);
-            $em->persist($vote);
-            $em->flush();
+            $votation = $vote->getVote();
+            if (!empty($votage)) {
+                $votage->setVote($votation);
+                $em->persist($votage);
+                $em->flush();
+            }
+            else {
+                $vote->setChallengeId($challenge);
+                $vote->setUserId($user);
+                $em->persist($vote);
+                $em->flush();
+            }
 
             return $this->redirectToRoute('challengelist');
         }

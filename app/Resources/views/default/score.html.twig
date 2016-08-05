@@ -5,8 +5,9 @@
     {% endblock %}
 
     {% block body %}
+
         {{ scores.0.idChallenge.name }}
-        {% for key, score in scores %}
+        {% for score in scores %}
             <div class="row">
                 <div class="col-md-12">
                     {{ score.idUser.username }}'s score : {{ score.score }} !
