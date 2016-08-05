@@ -6,6 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Doctrine\Common\Collections\ArrayCollection;
 
 use AppBundle\Entity\Score;
 
@@ -70,7 +71,20 @@ class GameController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $scores = $em->getRepository('AppBundle:Score')->findAll();
+        dump($scores);
+        
+        // $a = new ArrayCollection();
+        // $a->add('challengeName'.','.'userName'.','.'userScore');
 
-        return $this->render('default/score.html.twig', array('scores'=>$scores));
+        // foreach ($scores as $score) {
+        //     $userScore = $score->getScore();
+        //     $userId = $score->getIdUser()->getUserName();
+        //     $challengeId = $score->getIdChallenge()->getName();
+
+        //     $a->add($challengeId.','.$userId.','.$userScore);
+        //     $arr = $a->toArray();
+        // }
+
+        return $this->render('default/score.html.twig', array('scoresTab'=>$arr));
     }
 }
