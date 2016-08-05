@@ -32,7 +32,7 @@ class Score
     /**
      * @var integer
      *
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
      * @ORM\JoinColumn(name="gamer_id", referencedColumnName="id")
      */
     private $idUser;
