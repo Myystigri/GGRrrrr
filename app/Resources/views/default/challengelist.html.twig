@@ -20,17 +20,19 @@
                                 <h3 class="text-center">{{ challenge.name }}</h3>
                                 {% set i = 0 %}
                                 {% set somme = 0 %}
-                    {% for key, vote in votes if vote.challengeId.id == challenge.id %}
-                        {% set i = i + 1 %}
-
-                        {% set somme = (vote.vote+somme) %}
-                    {{ i }}       
-                    {% set moyenne = 0 %}
-                    {% endfor %}
-                    {% set moyenne = somme / i %}
-{#                         {{ moyenne }}
- #}                                   
-                                <p class="text-center">Challenge by <b>{{ challenge.creator }}</b></p>
+                                {% for key, vote in votes if vote.challengeId.id == challenge.id %}
+                                    {% set i = i + 1 %}
+                                    {% set somme = (vote.vote+somme) %}       
+                                    {% set moyenne = 0 %}
+                                {% endfor %}
+                                {% if somme == 0 %}
+                                    <p class="text-center">No vote for this challenge !</p>
+                                {% else %}
+                                    {% set moyenne = somme / i %}
+                                    <p class="text-center">Rating gamer: {{ moyenne }} / 5</p>
+                                {% endif %}
+                                   
+                                <p class="text-center">Challenge made by <b>{{ challenge.creator }}</b></p>
                                 <div class="text-center"><a href="{{path('game', { 'id': challenge.id })}}">
                                     <button id="{{ challenge.id }}" type="button" class="btn btn-primary btn-md sendCoords" data-coords="{{ challenge.coords }}">Go to this challenge FFS !</button>
                                 </a></div>

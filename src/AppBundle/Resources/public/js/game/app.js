@@ -92,7 +92,7 @@
 
     // Reset Timer
     function resetTimer(){
-      count = 5;
+      count = 30;
       counter = setInterval(timer, 1000);
     }
 
@@ -189,7 +189,7 @@
 
       // If distance is undefined, that means they ran out of time and didn't click the guess button
       if(ranOut == true){
-        $('#roundEnd').html('<p>Dang nabbit! You took too long!.<br/> You didn\'t score any points this round!<br/><br/><button class="btn btn-primary closeBtn" type="button">Continue</button></p></p>');
+        $('#roundEnd').html('<p>Sorry! You took too long!.<br/> You didn\'t score any points this round!<br/><br/><button class="btn btn-primary closeBtn" type="button">Continue</button></p></p>');
         $('#roundEnd').fadeIn();
 
         // Stop Counter

@@ -103,9 +103,9 @@ button.set {
 
 #miniMap { width: 300px; height: 300px; position: absolute; top: 20px; right: 20px; z-index: 1000; box-shadow: 0px 0px 20px rgba(255,255,255, 0.9); }
 
-#timer { font-size: 90px; line-height: 200px; text-align: center; width: 300px; height: 200px; background: green; position: absolute; top: 390px; right: 20px; z-index: 1000; box-shadow: 0px 0px 20px rgba(255,255,255, 0.9); }
+#timer { font-size: 60px; line-height: 200px; text-align: center; width: 200px; height: 200px; background: rgba(238,240,17, 0.7); position: absolute; top: 390px; right: 60px; z-index: 1000; box-shadow: 0px 0px 20px rgba(255,255,255, 0.9); border-radius: 50px; }
 
-#guessButton { font-size: 24px; font-weight: bold; color: white; width: 260px; cursor: pointer; text-align: center; position: absolute; top: 340px; right: 20px; z-index: 1000; }
+#guessButton { font-size: 17px; font-weight: bold; color: white; width: 200px; cursor: pointer; text-align: center; position: absolute; top: 340px; right: 60px; z-index: 1000; }
 #guessButton:hover { background: #FF6666; }
 
 #pano { width: 100%; height: 100%; z-index: 999; }

@@ -26,13 +26,13 @@ function rminitialize() {
     var actualMarker = new google.maps.Marker({
         position: actualLtLng,
         title:"Actual Location",
-        icon: '../../bundles/app/img/actual.png'
+        icon: '../../bundles/app/img/google-maps-marker-green.png'
     });
 
     var guessMarker = new google.maps.Marker({
         position: guessLtLng,
         title:"Your Guess",
-        icon: '../../bundles/app/img/guess.png'
+        icon: '../../bundles/app/img/google-maps-marker-orange.png'
     });
 
     // To add the marker to the map, call setMap();
