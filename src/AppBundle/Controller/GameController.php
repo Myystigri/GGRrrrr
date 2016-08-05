@@ -45,9 +45,9 @@ class GameController extends Controller
         {
             $em = $this->getDoctrine()->getManager();
             $user = $this->getUser();
-            $scores = $em->getRepository('AppBundle:Score')->findOneByIdUser($user);
             $totalScore = $request->request->get('score');
             $idChallenge = $request->request->get('id');
+            $scores = $em->getRepository('AppBundle:Score')->findOneBy(array('idChallenge' => $idChallenge, 'idUser'=> $user));
 
             if (!empty($user)){
                 if (!empty($scores)) {
@@ -57,8 +57,6 @@ class GameController extends Controller
 
                         $em->persist($scores);
                         $em->flush();
-                    }
-                    else {
                     }
                 }
                 else {
