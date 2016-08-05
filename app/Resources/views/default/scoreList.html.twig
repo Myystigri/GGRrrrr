@@ -12,8 +12,7 @@
                 <div class="thumbnail">
                 <div class="caption">
                 <h2 class="text-center">{{ challenge.name }}</h2>
-                <div class="text-center" style="margin-bottom:10px;"><a href="{{path('vote_new', { 'id': challenge.id })}}">
-                <button id="{{ challenge.id }}" type="button" class="btn btn-danger btn-md sendCoords" data-coords="{{ challenge.coords }}">Leave a note !</button>
+                <div class="text-center" style="margin-bottom:10px;"><a href="{{path('vote_new', { 'id': challenge.id })}}"><button id="{{ challenge.id }}" type="button" class="btn btn-danger btn-md sendCoords" data-coords="{{ challenge.coords }}">Leave a note !</button>
                 </a></div>
                 <div class="text-center"><a href="{{path('score', { 'id': challenge.id })}}">
                 <button id="{{ challenge.id }}" type="button" class="btn btn-primary btn-md sendCoords" data-coords="{{ challenge.coords }}">Go to this scoreboard !</button>
