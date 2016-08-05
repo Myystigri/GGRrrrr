@@ -44,9 +44,8 @@ class Challenge
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Score", mappedBy="Challenge")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Score", mappedBy="challenge")
      */
-
     private $scores; // Notez le « s », une annonce est liée à plusieurs candidatures
 
 

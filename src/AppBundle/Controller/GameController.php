@@ -86,7 +86,7 @@ class GameController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $scores = $em->getRepository('AppBundle:Score')->findAll();
-        $challenges = $em->getRepository('AppBundle:Challenge')->findAll();
+        $challenges = $em->getRepository('AppBundle:Challenge')->findOneById(6);
         dump($challenges);
 
 

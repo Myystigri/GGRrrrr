@@ -25,9 +25,9 @@ class Score
      * @var integer
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Challenge", inversedBy="scores")
-     * @ORM\JoinColumn(name="challenge_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="challenge", referencedColumnName="id")
      */
-    private $Challenge;
+    private $challenge;
 
     /**
      * @var integer
