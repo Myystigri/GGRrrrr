@@ -36,7 +36,7 @@ class GameController extends Controller
     /**
      * @Route("/score/new", options = { "expose" = true }, name="scoreNew")
      */
-    public function scoreAction(Request $request)
+    public function scoreNewAction(Request $request)
     {
         if($request->isXmlHttpRequest())
         {
@@ -44,6 +44,8 @@ class GameController extends Controller
             $user = $this->getUser();
             $scores = $em->getRepository('AppBundle:Score')->findOneByIdUser($user);
             $totalScore = $request->request->get('score');
+            $idChallenge = $request->request->get('id');
+
             if (!empty($user)){
                 if (!empty($scores)) {
                     $oldScore=$scores->getScore();
@@ -59,9 +61,6 @@ class GameController extends Controller
                 else {
 
                     $score = new Score();
-
-                    $idChallenge = $request->request->get('id');
-
                     $challenge = $em->getRepository('AppBundle:Challenge')->findOneById($idChallenge);
 
                     $score->setScore($totalScore);
@@ -75,35 +74,31 @@ class GameController extends Controller
             else {
             }
 
-            return $this->redirectToRoute('score');
+            return $this->redirectToRoute('score', array('id' => 'idChallenge'));
         }
     }
 
     /**
-     * @Route("/score", options = { "expose" = true }, name="score")
+     * @Route("/score", options = { "expose" = true }, name="scoreList")
      */
     public function scoreListAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $scores = $em->getRepository('AppBundle:Score')->findAll();
+
         $challenges = $em->getRepository('AppBundle:Challenge')->findAll();
-        dump($challenges);
 
+        return $this->render('default/scoreList.html.twig', array('challenges'=>$challenges));
+    }
 
+    /**
+     * @Route("/score/{id}", options = { "expose" = true }, name="score")
+     */
+    public function scoreAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $challenges = $em->getRepository('AppBundle:Challenge')->findOneById($id);
+        $scores = $em->getRepository('AppBundle:Score')->findByidChallenge($challenges);
 
-        
-        // $a = new ArrayCollection();
-        // $a->add('challengeName'.','.'userName'.','.'userScore');
-
-        // foreach ($scores as $score) {
-        //     $userScore = $score->getScore();
-        //     $userId = $score->getIdUser()->getUserName();
-        //     $challengeId = $score->getIdChallenge()->getName();
-
-        //     $a->add($challengeId.','.$userId.','.$userScore);
-        //     $arr = $a->toArray();
-        // }
-
-        return $this->render('default/score.html.twig', array('challenges'=>$challenges));
+        return $this->render('default/score.html.twig', array('scores'=>$scores, 'id'=>$id));
     }
 }

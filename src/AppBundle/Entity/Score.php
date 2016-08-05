@@ -24,10 +24,10 @@ class Score
     /**
      * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Challenge", inversedBy="scores")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Challenge")
      * @ORM\JoinColumn(name="challenge_id", referencedColumnName="id")
      */
-    private $Challenge;
+    private $idChallenge;
 
     /**
      * @var integer
@@ -56,52 +56,6 @@ class Score
     }
 
     /**
-     * Set idChallenge
-     *
-     * @param string $idChallenge
-     * @return Score
-     */
-    public function setIdChallenge($idChallenge)
-    {
-        $this->idChallenge = $idChallenge;
-
-        return $this;
-    }
-
-    /**
-     * Get idChallenge
-     *
-     * @return string 
-     */
-    public function getIdChallenge()
-    {
-        return $this->idChallenge;
-    }
-
-    /**
-     * Set idUser
-     *
-     * @param string $idUser
-     * @return Score
-     */
-    public function setIdUser($idUser)
-    {
-        $this->idUser = $idUser;
-
-        return $this;
-    }
-
-    /**
-     * Get idUser
-     *
-     * @return string 
-     */
-    public function getIdUser()
-    {
-        return $this->idUser;
-    }
-
-    /**
      * Set score
      *
      * @param integer $score
@@ -125,25 +79,48 @@ class Score
     }
 
     /**
-     * Set Challenge
+     * Set idChallenge
      *
-     * @param \AppBundle\Entity\Challenge $challenge
+     * @param \AppBundle\Entity\Challenge $idChallenge
      * @return Score
      */
-    public function setChallenge(\AppBundle\Entity\Challenge $challenge = null)
+    public function setIdChallenge(\AppBundle\Entity\Challenge $idChallenge = null)
     {
-        $this->Challenge = $challenge;
+        $this->idChallenge = $idChallenge;
 
         return $this;
     }
 
     /**
-     * Get Challenge
+     * Get idChallenge
      *
      * @return \AppBundle\Entity\Challenge 
      */
-    public function getChallenge()
+    public function getIdChallenge()
     {
-        return $this->Challenge;
+        return $this->idChallenge;
+    }
+
+    /**
+     * Set idUser
+     *
+     * @param \AppBundle\Entity\User $idUser
+     * @return Score
+     */
+    public function setIdUser(\AppBundle\Entity\User $idUser = null)
+    {
+        $this->idUser = $idUser;
+
+        return $this;
+    }
+
+    /**
+     * Get idUser
+     *
+     * @return \AppBundle\Entity\User 
+     */
+    public function getIdUser()
+    {
+        return $this->idUser;
     }
 }

@@ -43,12 +43,6 @@ class Challenge
      */
     private $name;
 
-    /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Score", mappedBy="Challenge")
-     */
-
-    private $scores; // Notez le « s », une annonce est liée à plusieurs candidatures
-
 
     /**
      * Get id
@@ -63,7 +57,7 @@ class Challenge
     /**
      * Set coords
      *
-     * @param array $coords
+     * @param string $coords
      * @return Challenge
      */
     public function setCoords($coords)
@@ -76,34 +70,11 @@ class Challenge
     /**
      * Get coords
      *
-     * @return array 
+     * @return string 
      */
     public function getCoords()
     {
         return $this->coords;
-    }
-
-    /**
-     * Set creator
-     *
-     * @param string $creator
-     * @return Challenge
-     */
-    public function setCreator($creator)
-    {
-        $this->creator = $creator;
-
-        return $this;
-    }
-
-    /**
-     * Get creator
-     *
-     * @return string 
-     */
-    public function getCreator()
-    {
-        return $this->creator;
     }
 
     /**
@@ -128,44 +99,27 @@ class Challenge
     {
         return $this->name;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->scores = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
-     * Add scores
+     * Set creator
      *
-     * @param \AppBundle\Entity\Score $scores
+     * @param \AppBundle\Entity\User $creator
      * @return Challenge
      */
-    public function addScore(\AppBundle\Entity\Score $scores)
+    public function setCreator(\AppBundle\Entity\User $creator = null)
     {
-        $this->scores[] = $scores;
+        $this->creator = $creator;
 
         return $this;
     }
 
     /**
-     * Remove scores
+     * Get creator
      *
-     * @param \AppBundle\Entity\Score $scores
+     * @return \AppBundle\Entity\User 
      */
-    public function removeScore(\AppBundle\Entity\Score $scores)
+    public function getCreator()
     {
-        $this->scores->removeElement($scores);
-    }
-
-    /**
-     * Get scores
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getScores()
-    {
-        return $this->scores;
+        return $this->creator;
     }
 }

@@ -67,7 +67,7 @@
         type: 'POST',
         data: {'score': totalScore, 'id': dataid},
         success: function(data){
-          window.location.href = Routing.generate('score');
+          window.location.href = Routing.generate('score', {'id': dataid});
         }
         // beforeSend: function(){ // Avant d'envoyer la requete
         //   $('#loading').css('display', 'block ');

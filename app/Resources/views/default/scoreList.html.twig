@@ -5,12 +5,11 @@
     {% endblock %}
 
     {% block body %}
-        {{ scores.0.idChallenge.name }}
-        {% for key, score in scores %}
+        {% for challenge in challenges %}
             <div class="row">
                 <div class="col-md-12">
-                    {{ score.idUser.username }}'s score : {{ score.score }} !
-                    <a href="{{path('vote_new', { 'id': id })}}"><button>Voter pour ce challenge</button></a>
+                    <a href="{{path('score', { 'id': challenge.id })}}">{{ challenge.name }}</a>
+                    <a href="{{path('vote_new', { 'id': challenge.id })}}"><button>Voter pour ce challenge</button></a>
                 </div>
             </div>
         {% endfor %}
