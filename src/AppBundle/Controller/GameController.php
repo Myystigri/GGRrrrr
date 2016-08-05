@@ -41,25 +41,38 @@ class GameController extends Controller
         if($request->isXmlHttpRequest())
         {
             $em = $this->getDoctrine()->getManager();
-
-            $score = new Score();
-
-            $totalScore = $request->request->get('score');
-            $idChallenge = $request->request->get('id');
-
             $user = $this->getUser();
-            $challenge = $em->getRepository('AppBundle:Challenge')->findOneById($idChallenge);
+            $scores = $em->getRepository('AppBundle:Score')->findOneByIdUser($user);
+            $totalScore = $request->request->get('score');
 
-            $score->setScore($totalScore);
-            $score->setIdChallenge($challenge);
-            $score->setIdUser($user);
+            if (!empty($scores)) {
+                $oldScore=$scores->getScore();
+                if ($oldScore<$totalScore){
+                $scores->setScore($totalScore);
 
-            $em->persist($score);
-            $em->flush();
+                $em->persist($scores);
+                $em->flush();
+                }
+                else {
+                }
+            }
+            else {
+
+                $score = new Score();
+
+                $idChallenge = $request->request->get('id');
+
+                $challenge = $em->getRepository('AppBundle:Challenge')->findOneById($idChallenge);
+
+                $score->setScore($totalScore);
+                $score->setIdChallenge($challenge);
+                $score->setIdUser($user);
+
+                $em->persist($score);
+                $em->flush();
+            }
 
             return $this->redirectToRoute('score');
-            // $response = new Response($score);
-            // return $response;
         }
     }
 
